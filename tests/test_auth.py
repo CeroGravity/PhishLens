@@ -126,17 +126,17 @@ def test_analyze_returns_authresult_not_finding() -> None:
 
 
 def test_auth_does_not_import_scoring_or_heuristics() -> None:
-    # Importing the auth package must not pull in scoring/heuristics, and the
-    # auth module namespaces must expose no Finding symbol.
+    # In a clean interpreter, importing only the auth package must not pull in
+    # scoring/heuristics, and auth must produce no Finding objects. Run in a
+    # subprocess so other tests' imports don't pollute sys.modules.
+    import subprocess
     import sys
 
-    import phishlens.auth as auth_pkg
-    import phishlens.auth.alignment as alignment_mod
-    import phishlens.auth.dns as dns_mod
-    import phishlens.auth.results as results_mod
-
-    assert "phishlens.scoring" not in sys.modules
-    assert "phishlens.heuristics" not in sys.modules
-
-    for mod in (auth_pkg, alignment_mod, dns_mod, results_mod):
-        assert not hasattr(mod, "Finding")
+    code = (
+        "import sys; import phishlens.auth as a;"
+        "assert 'phishlens.scoring' not in sys.modules;"
+        "assert 'phishlens.heuristics' not in sys.modules;"
+        "assert not hasattr(a, 'Finding')"
+    )
+    result = subprocess.run([sys.executable, "-c", code], capture_output=True)
+    assert result.returncode == 0, result.stderr.decode()

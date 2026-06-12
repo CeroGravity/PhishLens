@@ -1,0 +1,13 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Return-Path: <noreply@xn--pple-43d.test>
+From: "Example" <noreply@xn--pple-43d.test>
+To: Victim <victim@example.com>
+Subject: Update
+Date: Thu, 04 Jan 2024 10:00:00 +0000
+Message-ID: <linkpuny-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p><a href="https://xn--pple-43d.test/">Open</a></p>
+</body></html>

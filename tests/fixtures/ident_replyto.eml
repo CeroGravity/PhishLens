@@ -1,0 +1,12 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Return-Path: <alerts@example.com>
+From: Alerts <alerts@example.com>
+Reply-To: replies@other.test
+To: Recipient <recipient@example.com>
+Subject: Notice
+Date: Mon, 01 Jan 2024 12:00:00 +0000
+Message-ID: <identreplyto-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Please reply to confirm.

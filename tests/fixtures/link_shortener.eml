@@ -1,0 +1,13 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Return-Path: <noreply@bit.ly>
+From: "Example" <noreply@bit.ly>
+To: Victim <victim@example.com>
+Subject: Link
+Date: Fri, 05 Jan 2024 11:00:00 +0000
+Message-ID: <linkshort-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p><a href="https://bit.ly/abc123">Open</a></p>
+</body></html>

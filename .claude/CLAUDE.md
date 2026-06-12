@@ -1,6 +1,5 @@
 # CLAUDE.md — PhishLens
 
-> Project-specific governance. Supersedes the generic cybersec CLAUDE.md where they conflict. Read fully before any action in this repo.
 ## Response Style (Always Strict - Exception Report & Manual Checklist)
 
 - Use 3-6 word sentences.
@@ -59,7 +58,7 @@ These touch registries/resolvers about a domain. They never touch the suspicious
 ## 6. Engineering constraints
 
 - Python 3.11+. Standard library `email` for parsing.
-- Sync only. `httpx` (sync) for RDAP, `dnspython` for DNS. These two are the **only** runtime third-party deps.
+- Sync only. `httpx` (sync) for RDAP, `dnspython` for DNS, `tldextract` for registrable-domain extraction. These three are the **only** runtime third-party deps. `tldextract` MUST be configured offline and deterministic — bundled suffix snapshot only, live suffix-list fetch disabled (`TLDExtract(suffix_list_urls=(), cache_dir=None)`), zero network calls. (`dkimpy` remains a Phase 4 stretch dep; not added yet.)
 - Dataclasses for all models. `argparse` for CLI.
 - No Docker. No PyPI publish. No async. No ML.
 - Determinism: identical input → identical report. No randomness, no time-dependent verdicts except domain-age (which records the reference date in the report).
