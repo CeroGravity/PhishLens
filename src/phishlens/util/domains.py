@@ -76,3 +76,19 @@ def registrable_domain(host_or_url: str) -> str | None:
     if not ext.domain or not ext.suffix:
         return None
     return f"{ext.domain}.{ext.suffix}"
+
+
+def sld_of(host_or_url: str) -> str | None:
+    """Second-level-domain label (registrable domain minus public suffix).
+
+    e.g. ``mail.example.co.uk`` -> ``example``. None for IPs / suffix-less.
+    """
+    if not host_or_url:
+        return None
+    host = host_of(host_or_url) or host_or_url.strip().lower()
+    if not host or is_ip_literal(host):
+        return None
+    ext = _EXTRACT(host)
+    if not ext.domain or not ext.suffix:
+        return None
+    return ext.domain

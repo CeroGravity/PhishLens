@@ -1,0 +1,13 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Return-Path: <noreply@example.com>
+From: "Notices" <noreply@example.com>
+To: Victim <victim@example.com>
+Subject: Notice
+Date: Tue, 02 Jan 2024 12:00:00 +0000
+Message-ID: <brandtld-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p><a href="https://examplebank.invalid/">Open</a></p>
+</body></html>
