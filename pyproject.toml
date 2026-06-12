@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishlens"
+version = "0.0.0"
+description = "Defensive, purely analytical phishing-analysis tool."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx",
+    "dnspython",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "mypy",
+    "pytest",
+]
+
+[project.scripts]
+phishlens = "phishlens.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = "phishlens.*"
+disallow_untyped_defs = true
+disallow_incomplete_defs = true

@@ -1,0 +1,17 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Authentication-Results: mx.example.com; spf=pass smtp.mailfrom=example.com; dkim=pass header.d=example.com; dmarc=pass header.from=example.com
+Return-Path: <alice@example.com>
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Subject: Lunch tomorrow
+Date: Mon, 01 Jan 2024 12:00:00 +0000
+Message-ID: <benign-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hi Bob,
+
+Are we still on for lunch tomorrow at noon? Let me know.
+
+Thanks,
+Alice

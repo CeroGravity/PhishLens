@@ -1,0 +1,20 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=gmail.example; dkim=none; dmarc=fail header.from=gmail.example
+Return-Path: <random@gmail.example>
+From: "Example Bank Support" <random@gmail.example>
+Reply-To: support@secure-example-bank.test
+To: Victim <victim@example.com>
+Subject: Urgent: verify your account
+Date: Tue, 02 Jan 2024 09:30:00 +0000
+Message-ID: <spoof-0001@gmail.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+  <body>
+    <p>Dear customer, please verify your account immediately.</p>
+    <p>
+      <a href="http://login.secure-example-bank.test/verify">www.examplebank.test</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=example.com; dkim=fail; dmarc=fail header.from=example.com
+Return-Path: <alice@example.com>
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Subject: Account notice
+Date: Tue, 02 Jan 2024 09:30:00 +0000
+Message-ID: <authfail-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Please review the notice.

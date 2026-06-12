@@ -1,0 +1,13 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Authentication-Results: mx.example.com; dkim=pass header.d=other.test; dmarc=fail header.from=example.com
+DKIM-Signature: v=1; a=rsa-sha256; d=other.test; s=sel1; h=from:to:subject; bh=AAAA; b=BBBB
+Return-Path: <bounce@other.test>
+From: "Example Notices" <notices@example.com>
+To: Victim <victim@example.com>
+Subject: Action required
+Date: Wed, 03 Jan 2024 14:15:00 +0000
+Message-ID: <misaligned-0001@other.test>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Sign in to continue.

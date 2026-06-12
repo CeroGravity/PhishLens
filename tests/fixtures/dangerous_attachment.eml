@@ -1,0 +1,22 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Authentication-Results: mx.example.com; spf=softfail smtp.mailfrom=example.test; dkim=none; dmarc=none
+Return-Path: <billing@example.test>
+From: "Billing Dept" <billing@example.test>
+To: Victim <victim@example.com>
+Subject: Your invoice
+Date: Wed, 03 Jan 2024 14:15:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="SYNTHETIC-BOUNDARY-0003"
+
+--SYNTHETIC-BOUNDARY-0003
+Content-Type: text/plain; charset="utf-8"
+
+Please find your invoice attached.
+
+--SYNTHETIC-BOUNDARY-0003
+Content-Type: application/octet-stream; name="invoice.pdf.exe"
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+Content-Transfer-Encoding: 7bit
+
+SYNTHETIC-STUB: harmless ASCII placeholder, no executable bytes.
+--SYNTHETIC-BOUNDARY-0003--

@@ -1,0 +1,14 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Authentication-Results: mx.example.com; spf=pass smtp.mailfrom=example.com; dkim=pass header.d=example.com; dmarc=pass header.from=example.com
+Received-SPF: pass (example.com: sender authorized) envelope-from=alice@example.com;
+DKIM-Signature: v=1; a=rsa-sha256; d=example.com; s=sel1; h=from:to:subject; bh=AAAA; b=BBBB
+Return-Path: <alice@example.com>
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Subject: Quarterly report
+Date: Mon, 01 Jan 2024 12:00:00 +0000
+Message-ID: <authpass-0001@example.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Report attached in the portal.
