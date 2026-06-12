@@ -58,7 +58,7 @@ These touch registries/resolvers about a domain. They never touch the suspicious
 ## 6. Engineering constraints
 
 - Python 3.11+. Standard library `email` for parsing.
-- Sync only. `httpx` (sync) for RDAP, `dnspython` for DNS, `tldextract` for registrable-domain extraction. These three are the **only** runtime third-party deps. `tldextract` MUST be configured offline and deterministic — bundled suffix snapshot only, live suffix-list fetch disabled (`TLDExtract(suffix_list_urls=(), cache_dir=None)`), zero network calls. (`dkimpy` remains a Phase 4 stretch dep; not added yet.)
+- Sync only. `httpx` (sync) for RDAP, `dnspython` for DNS, `tldextract` for registrable-domain extraction, `dkimpy` for optional DKIM crypto verification. These four are the **only** runtime third-party deps. `tldextract` MUST be configured offline and deterministic — bundled suffix snapshot only, live suffix-list fetch disabled (`TLDExtract(suffix_list_urls=(), cache_dir=None)`), zero network calls. `httpx` is used as the default RDAP client for domain-age lookups (queries a registry about a domain, never the suspicious host), strictly behind `--online`, injectable, offline default = no lookup. `dkimpy` is used ONLY for optional DKIM crypto verification, ONLY under `--online` (it fetches the signer's public key via an injectable `dnsfunc`), mockable, offline default = skipped (the receiver's stamped Authentication-Results verdict stands).
 - Dataclasses for all models. `argparse` for CLI.
 - No Docker. No PyPI publish. No async. No ML.
 - Determinism: identical input → identical report. No randomness, no time-dependent verdicts except domain-age (which records the reference date in the report).

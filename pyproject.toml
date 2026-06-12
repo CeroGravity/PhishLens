@@ -12,6 +12,7 @@ dependencies = [
     "httpx",
     "dnspython",
     "tldextract",
+    "dkimpy",
 ]
 
 [project.optional-dependencies]
@@ -44,3 +45,8 @@ warn_unused_ignores = true
 module = "phishlens.*"
 disallow_untyped_defs = true
 disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+# dkimpy ships no type stubs / py.typed marker.
+module = "dkim.*"
+ignore_missing_imports = true

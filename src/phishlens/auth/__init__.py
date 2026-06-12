@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from phishlens.models import AuthResult, ParsedEmail
 
-from .alignment import from_domain, strict_aligned
+from .alignment import compute_relaxed_alignment, from_domain
 from .dns import DnsMetadata, Resolver, lookup_metadata
 from .results import extract_stamped_auth
 
@@ -29,7 +29,9 @@ def analyze(
     stamped = extract_stamped_auth(parsed.headers.raw)
 
     from_dom = from_domain(parsed.from_addr)
-    aligned = strict_aligned(from_dom, stamped.dkim_domain, stamped.spf_domain)
+    aligned = compute_relaxed_alignment(
+        from_dom, stamped.dkim_domain, stamped.spf_domain
+    )
 
     # Supplementary, verdict-neutral metadata. Retrieved only on the online
     # path; the result is intentionally not folded into AuthResult (Phase 6).

@@ -19,12 +19,12 @@ def from_domain(from_addr: str | None) -> str | None:
     return from_addr.rsplit("@", 1)[1].strip().lower() or None
 
 
-def strict_aligned(
+def compute_relaxed_alignment(
     from_dom: str | None,
     dkim_domain: str | None,
     spf_domain: str | None,
 ) -> bool | None:
-    """Relaxed (registrable-domain) alignment.
+    """DMARC relaxed (registrable-domain) alignment.
 
     Returns:
       None  if from_dom is unknown, or neither dkim_domain nor spf_domain known.

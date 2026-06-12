@@ -82,11 +82,22 @@ def test_tldextract_configured_offline() -> None:
 
 
 def test_no_network_modules_imported() -> None:
-    # Detectors must not pull in httpx / dnspython at import or run time.
-    run_identity_link(load_eml(str(FIXTURES / "link_mismatch.eml")))
-    assert "httpx" not in sys.modules
-    assert "dns" not in sys.modules
-    assert "dns.resolver" not in sys.modules
+    # The offline detector path must not pull in httpx / dnspython at import or
+    # run time. Checked in a clean subprocess so other tests' imports (e.g. the
+    # online DKIM tests, which legitimately import dkim/dns) don't pollute
+    # sys.modules.
+    import subprocess
+
+    code = (
+        "import sys;"
+        "from phishlens.heuristics import run_identity_link;"
+        "from phishlens.ingest.eml import load_eml;"
+        f"run_identity_link(load_eml({str(FIXTURES / 'link_mismatch.eml')!r}));"
+        "assert 'httpx' not in sys.modules, 'httpx imported';"
+        "assert 'dns' not in sys.modules, 'dns imported'"
+    )
+    result = subprocess.run([sys.executable, "-c", code], capture_output=True)
+    assert result.returncode == 0, result.stderr.decode()
 
 
 def test_determinism_order_included() -> None:
