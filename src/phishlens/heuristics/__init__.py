@@ -15,6 +15,7 @@ from phishlens.enrich.domain_age import find_newly_registered
 from phishlens.enrich.rdap import RdapClient
 from phishlens.models import Finding, ParsedEmail
 
+from .attachments import detect_attachments
 from .headers_anomaly import detect_header_anomalies
 from .identity import detect_identity
 from .links_heuristics import detect_links
@@ -43,6 +44,7 @@ def run_identity_link(
     findings += detect_header_anomalies(parsed)
     findings += detect_links(parsed)
     findings += run_brand(parsed, brands=brands)
+    findings += detect_attachments(parsed)
     return findings
 
 

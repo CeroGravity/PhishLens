@@ -1,0 +1,22 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Return-Path: <billing@example.test>
+From: "Billing" <billing@example.test>
+To: Victim <victim@example.com>
+Subject: Report
+Date: Mon, 01 Jan 2024 12:00:00 +0000
+Message-ID: <attmacro-0001@example.test>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="SYNTHETIC-BOUNDARY-MACRO"
+
+--SYNTHETIC-BOUNDARY-MACRO
+Content-Type: text/plain; charset="utf-8"
+
+See attached report.
+
+--SYNTHETIC-BOUNDARY-MACRO
+Content-Type: application/vnd.ms-word.document.macroEnabled.12; name="report.docm"
+Content-Disposition: attachment; filename="report.docm"
+Content-Transfer-Encoding: 7bit
+
+SYNTHETIC-STUB: harmless ASCII placeholder, no macro, no binary.
+--SYNTHETIC-BOUNDARY-MACRO--

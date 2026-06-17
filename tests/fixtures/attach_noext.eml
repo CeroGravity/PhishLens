@@ -1,0 +1,22 @@
+X-Synthetic-Fixture: SYNTHETIC DEFANGED SAMPLE — not real mail (PhishLens CLAUDE.md §5)
+Return-Path: <noreply@example.test>
+From: "Sender" <noreply@example.test>
+To: Victim <victim@example.com>
+Subject: File
+Date: Thu, 04 Jan 2024 12:00:00 +0000
+Message-ID: <attnoext-0001@example.test>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="SYNTHETIC-BOUNDARY-NE"
+
+--SYNTHETIC-BOUNDARY-NE
+Content-Type: text/plain; charset="utf-8"
+
+File attached.
+
+--SYNTHETIC-BOUNDARY-NE
+Content-Type: application/octet-stream; name="attachment"
+Content-Disposition: attachment; filename="attachment"
+Content-Transfer-Encoding: 7bit
+
+SYNTHETIC-STUB: harmless ASCII placeholder, no binary.
+--SYNTHETIC-BOUNDARY-NE--
