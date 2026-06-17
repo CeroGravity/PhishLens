@@ -56,3 +56,56 @@ _BRANDS: tuple[Brand, ...] = (
 def load_brands() -> tuple[Brand, ...]:
     """Return the shipped brand list."""
     return _BRANDS
+
+
+class BrandFileError(ValueError):
+    """Raised when a --brands file is malformed."""
+
+
+def load_brands_from_file(path: str) -> tuple[Brand, ...]:
+    """Load brands from a JSON file: [{"name","aliases","domains"}, ...].
+
+    Aliases/domains are lowercased. Raises BrandFileError on any shape problem.
+    """
+    import json
+
+    try:
+        with open(path, encoding="utf-8") as fh:
+            data = json.load(fh)
+    except FileNotFoundError as exc:
+        raise BrandFileError(f"brands file not found: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise BrandFileError(f"brands file is not valid JSON: {exc}") from exc
+
+    if not isinstance(data, list):
+        raise BrandFileError("brands file must be a JSON array of objects")
+
+    brands: list[Brand] = []
+    for i, entry in enumerate(data):
+        if not isinstance(entry, dict):
+            raise BrandFileError(f"brand #{i} is not an object")
+        name = entry.get("name")
+        aliases = entry.get("aliases")
+        domains = entry.get("domains")
+        if not isinstance(name, str) or not name:
+            raise BrandFileError(f"brand #{i} missing a string 'name'")
+        if not isinstance(aliases, list) or not all(
+            isinstance(a, str) for a in aliases
+        ):
+            raise BrandFileError(f"brand {name!r} 'aliases' must be a list of strings")
+        if (
+            not isinstance(domains, list)
+            or not domains
+            or not all(isinstance(d, str) for d in domains)
+        ):
+            raise BrandFileError(
+                f"brand {name!r} 'domains' must be a non-empty list of strings"
+            )
+        brands.append(
+            Brand(
+                name=name.lower(),
+                aliases=tuple(a.lower() for a in aliases),
+                domains=tuple(d.lower() for d in domains),
+            )
+        )
+    return tuple(brands)
